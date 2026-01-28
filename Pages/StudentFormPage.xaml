@@ -1,0 +1,89 @@
+﻿<Page x:Class="Pract_12.Pages.StudentFormPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pract_12.Pages"
+      xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:validators="clr-namespace:Pract_12.ValidationRules"
+     
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentFormPage">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <Label>Login</Label>
+                <TextBox m:HintAssist.Hint="Login">
+                    <TextBox.Text>
+                        <Binding Path="Login" UpdateSourceTrigger="PropertyChanged"
+             ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validators:RequiredRule/>
+                                <validators:LoginValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label>Name</Label>
+                <TextBox m:HintAssist.Hint="Name" >
+                    <TextBox.Text>
+                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validators:RequiredRule/>
+                                <validators:LoginValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label>Email</Label>
+                <TextBox m:HintAssist.Hint="Email">
+                    <TextBox.Text>
+                        <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validators:RequiredRule/>
+                                <validators:LoginValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label>Password</Label>
+                <TextBox m:HintAssist.Hint="Password">
+                    <TextBox.Text>
+                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validators:RequiredRule/>
+                                <validators:PasswordValid/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel>
+                <Label>Дата CreatedAt</Label>
+                <DatePicker m:HintAssist.Hint="Date">
+                    <DatePicker.SelectedDate>
+                        <Binding Path="CreatedAt" UpdateSourceTrigger="PropertyChanged"
+ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validators:RequiredRule/>
+                                <validators:DateValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </DatePicker.SelectedDate>
+                </DatePicker>
+            </StackPanel>
+            <StackPanel>
+                <Button Click="save">Сохранить в БД</Button>
+                <Button Click="back">Назад</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
