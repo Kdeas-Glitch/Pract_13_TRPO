@@ -23,10 +23,10 @@ namespace Pract_12.Pages
     /// </summary>
     public partial class StudentFormPage : Page
     {
-        private StudentsService _service = new();
-        public Student _student = new();
+        private UsersService _service = new();
+        public User _student = new();
         bool isEdit = false;
-        public StudentFormPage(Student? _editStudent = null)
+        public StudentFormPage(User? _editStudent = null)
         {
             InitializeComponent();
             if (_editStudent != null)
@@ -47,6 +47,18 @@ namespace Pract_12.Pages
         private void back(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Profile(object sender, RoutedEventArgs e)
+        {
+            if (_student.Name != null && _student.Email != null && _student.Password != null && _student.Login != null)
+            {
+                _student.UserProfile = new();
+                NavigationService.Navigate(new UserProfileFormPage(isEdit,_student));
+                
+            }
+            else
+                MessageBox.Show("Все поля должны быть заполнены");
         }
     }
 }

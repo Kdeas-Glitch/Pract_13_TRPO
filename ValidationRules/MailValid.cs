@@ -14,11 +14,11 @@ namespace Pract_12.ValidationRules
 {
     class MailValid : ValidationRule
     {
-        public StudentsService service { get; set; } = new();
+        public UsersService service { get; set; } = new();
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string text = "";
-            ObservableCollection<Student> st = service.Students;
+            ObservableCollection<User> st = service.Users;
             var input = (value ?? "").ToString().Trim();
             if(!input.Contains("@"))
                 return new ValidationResult(false, "Должен быть символ @");

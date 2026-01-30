@@ -9,7 +9,7 @@
      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="StudentFormPage">
+      Title="UserFormPage">
 
     <Grid>
         <StackPanel>
@@ -79,7 +79,9 @@ ValidatesOnDataErrors="True">
                     </TextBox.Text>
                 </TextBox>
             </StackPanel>
+            
             <StackPanel>
+                <Button Click="Profile">Профайл</Button>
                 <Button Click="save">Сохранить в БД</Button>
                 <Button Click="back">Назад</Button>
             </StackPanel>

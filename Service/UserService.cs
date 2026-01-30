@@ -1,4 +1,6 @@
-﻿using Pract_12.Data;
+﻿using Microsoft.EntityFrameworkCore;
+
+using Pract_12.Data;
 
 using System;
 using System.Collections.Generic;
@@ -9,44 +11,47 @@ using System.Threading.Tasks;
 
 namespace Pract_12.Service
 {
-    public class StudentsService
+    public class UsersService
     {
         private readonly AppDbContext _db = BaseDbService.Instance.Context;
-        public ObservableCollection<Student> Students { get; set; } = new();
-        public StudentsService()
+        public ObservableCollection<User> Users { get; set; } = new();
+        public UsersService()
         {
             GetAll();
         }
-        public void Add(Student student)
+        public void Add(User student)
         {
-            var _student = new Student
+            var _student = new User
             {
                 Name = student.Name,
                 Login = student.Login,
                 Email = student.Email,
                 Password = student.Password,
                 CreatedAt = student.CreatedAt,
+                UserProfile = student.UserProfile,
             };
-            _db.Add<Student>(_student);
+            _db.Add<User>(_student);
             Commit();
-            Students.Add(_student);
+            Users.Add(_student);
         }
         public int Commit() => _db.SaveChanges();
         public void GetAll()
         {
-            var students = _db.Students.ToList();
-            Students.Clear();
-            foreach (var student in students)
+            var users = _db.Students
+                .Include(s=>s.UserProfile)
+                .ToList();
+            Users.Clear();
+            foreach (var student in users)
             {
-                Students.Add(student);
+                Users.Add(student);
             }
         }
-        public void Remove(Student student)
+        public void Remove(User student)
         {
-            _db.Remove<Student>(student);
+            _db.Remove<User>(student);
             if (Commit() > 0)
-                if (Students.Contains(student))
-                    Students.Remove(student);
+                if (Users.Contains(student))
+                    Users.Remove(student);
         }
     }
 }

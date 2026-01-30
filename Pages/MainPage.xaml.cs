@@ -23,8 +23,8 @@ namespace Pract_12.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public StudentsService service { get; set; } = new();
-        public Student? student { get; set; } = null;
+        public UsersService service { get; set; } = new();
+        public User? student { get; set; } = null;
         public MainPage()
         {
             InitializeComponent();

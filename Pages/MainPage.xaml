@@ -24,7 +24,7 @@
             <Button Style="{DynamicResource MaterialDesignFlatButton}" Click="go_form">Добавить</Button>
             <Button Style="{DynamicResource MaterialDesignFlatButton}" Click="remove">Удалить</Button>
         </StackPanel>
-        <ListView Grid.Row="1" ItemsSource="{Binding service.Students}" MouseDoubleClick="Edit" SelectedItem="{Binding student}">
+        <ListView Grid.Row="1" ItemsSource="{Binding service.Users}" MouseDoubleClick="Edit" SelectedItem="{Binding student}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -39,6 +39,17 @@
                             <TextBlock Text="{Binding Password}"/>
                             <TextBlock Text="{Binding CreatedAt, StringFormat={}{0:dd.MM.yyyy}}"/>
                         </StackPanel>
+                        <DockPanel Margin="0 10">
+                            <TextBlock DockPanel.Dock="Right">Информация</TextBlock>
+                            <TextBlock DockPanel.Dock="Right" TextWrapping="Wrap">
+                                <Run Text="Телефон: "/>
+                                <Run Text="{Binding UserProfile.Phone}"/>
+                                <Run Text="День рождения: "/>
+                                <Run Text="{Binding UserProfile.Birthday}"/>
+                                <Run Text="Описание: "/>
+                                <Run Text="{Binding UserProfile.Bio}"/>
+                            </TextBlock>
+                        </DockPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

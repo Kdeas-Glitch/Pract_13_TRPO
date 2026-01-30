@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pract_12.Migrations;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pract_12.Data
 {
-    public class Student : ObservableObject
+    public class User : ObservableObject
     {
         private int _id;
         public int Id
@@ -39,11 +41,17 @@ namespace Pract_12.Data
             get => _password;
             set => SetProperty(ref _password, value);
         }
-        private DateTime _createdAt;
+        private DateTime _createdAt=DateTime.Now;
         public DateTime CreatedAt
         {
             get => _createdAt;
             set => SetProperty(ref _createdAt, value);
+        }
+        private UserProfile _userProfile;
+        public UserProfile UserProfile
+        {
+            get => _userProfile;
+            set => SetProperty(ref _userProfile, value);
         }
     }
 }
