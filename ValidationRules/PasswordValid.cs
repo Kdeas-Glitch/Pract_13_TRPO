@@ -18,38 +18,37 @@ namespace Pract_12.ValidationRules
             bool dig = false;
             bool LetSm = false;
             bool LetBg = false;
+            char[] simb = { '!', '@', '#', '%', '^', '&', '*', '(',')', '№', '?' };
             var input = (value ?? "").ToString().Trim();
-            if (input.Length != 8)
+            if (input.Length <  8)
             {
                 return new ValidationResult(false, "Должно быть 8 символов");
             }
-            for (int i = 0; i < input.Count(); i++)
+            for (int i = 0; i < input.Length; i++)
             {
-                if (Char.IsDigit(input[i]))
+                char a = input[i];
+                if (Char.IsNumber(a))
                 {
                     dig = true;
                 }
                 else {
-                    if (Char.IsLetter(input[i]))
+                    if (simb.Contains(a))
                     {
-                        if (Char.IsUpper(input[i]))
-                        {
-                            LetBg = true;
-                        }
-                        if (Char.IsLower(input[i]))
-                        {
-                            LetSm = true;
-                        }
+                        sim = true;
                     }
                     else
                     {
-                        if (input[i] != ' ')
+
+                        if (Char.IsLetter(a) && (!simb.Contains(a)))
                         {
-                            sim = true;
-                        }
-                        else
-                        {
-                            return new ValidationResult(false, "Без пробелов");
+                            if (Char.IsUpper(a))
+                            {
+                                LetBg = true;
+                            }
+                            if (Char.IsLower(a))
+                            {
+                                LetSm = true;
+                            }
                         }
                     }
                 }

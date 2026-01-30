@@ -13,7 +13,7 @@ namespace Pract_12.ValidationRules
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             var input = (value ?? "").ToString().Trim();
-            if (input.Count()!=10)
+            if (input.Count()<10)
             {
                 return new ValidationResult(false, "Необходимо ввести Полную дату ДД.ММ.ГГГГ");
             }

@@ -47,7 +47,7 @@
                         <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                             <Binding.ValidationRules>
                                 <validators:RequiredRule/>
-                                <validators:LoginValidation/>
+                                <validators:MailValid/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -68,17 +68,16 @@
             </StackPanel>
             <StackPanel>
                 <Label>Дата CreatedAt</Label>
-                <DatePicker m:HintAssist.Hint="Date">
-                    <DatePicker.SelectedDate>
+                <TextBox m:HintAssist.Hint="Date">
+                    <TextBox.Text>
                         <Binding Path="CreatedAt" UpdateSourceTrigger="PropertyChanged"
 ValidatesOnDataErrors="True">
                             <Binding.ValidationRules>
-                                <validators:RequiredRule/>
                                 <validators:DateValidation/>
                             </Binding.ValidationRules>
                         </Binding>
-                    </DatePicker.SelectedDate>
-                </DatePicker>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel>
                 <Button Click="save">Сохранить в БД</Button>
