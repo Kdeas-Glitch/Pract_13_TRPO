@@ -4,11 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Pract_12.Pages"
-        xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
-xmlns:validators="clr-namespace:Pract_12.ValidationRules"      
+       xmlns:validators="clr-namespace:Pract_12.ValidationRules"
+        xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:conv="clr-namespace:Pract_12.Converter"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserProfileFormPage">
+    <Page.Resources>
+        <conv:ValidationConverter  x:Key="ValidationConverter"/>
+    </Page.Resources>
     <StackPanel>
         <StackPanel>
         <Label>Аватар(ссылка)</Label>
@@ -52,7 +56,17 @@ xmlns:validators="clr-namespace:Pract_12.ValidationRules"
         </TextBox>
     </StackPanel>
         <StackPanel>
-            <Button Click="save">Сохранить</Button>
+            <Button Click="save" Content="Сохранить в БД" Cursor="Hand">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource ValidationConverter}">
+                        <Binding ElementName="login" Path="(Validation.HasError)" />
+                        <Binding ElementName="name" Path="(Validation.HasError)" />
+                        <Binding ElementName="email" Path="(Validation.HasError)" />
+                        <Binding ElementName="passw" Path="(Validation.HasError)" />
+                        <Binding ElementName="date" Path="(Validation.HasError)" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
             <Button Click="back">Назад</Button>
         </StackPanel>
     </StackPanel>

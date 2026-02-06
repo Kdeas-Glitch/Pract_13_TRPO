@@ -48,6 +48,7 @@ namespace Pract_12.Pages
         }
         private void back(object sender, RoutedEventArgs e)
         {
+
             NavigationService.GoBack();
         }
     }

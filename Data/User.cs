@@ -47,8 +47,8 @@ namespace Pract_12.Data
             get => _createdAt;
             set => SetProperty(ref _createdAt, value);
         }
-        private UserProfile _userProfile;
-        public UserProfile UserProfile
+        private UserProfile? _userProfile;
+        public UserProfile? UserProfile
         {
             get => _userProfile;
             set => SetProperty(ref _userProfile, value);

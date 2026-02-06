@@ -6,16 +6,18 @@
       xmlns:local="clr-namespace:Pract_12.Pages"
       xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:validators="clr-namespace:Pract_12.ValidationRules"
-     
+      xmlns:conv="clr-namespace:Pract_12.Converter"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserFormPage">
-
+    <Page.Resources>
+        <conv:ValidationConverter  x:Key="ValidationConverter"/>
+    </Page.Resources>
     <Grid>
         <StackPanel>
             <StackPanel>
                 <Label>Login</Label>
-                <TextBox m:HintAssist.Hint="Login">
+                <TextBox x:Name="login" m:HintAssist.Hint="Login">
                     <TextBox.Text>
                         <Binding Path="Login" UpdateSourceTrigger="PropertyChanged"
              ValidatesOnDataErrors="True">
@@ -29,7 +31,7 @@
             </StackPanel>
             <StackPanel>
                 <Label>Name</Label>
-                <TextBox m:HintAssist.Hint="Name" >
+                <TextBox x:Name="name" m:HintAssist.Hint="Name" >
                     <TextBox.Text>
                         <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                             <Binding.ValidationRules>
@@ -42,7 +44,7 @@
             </StackPanel>
             <StackPanel>
                 <Label>Email</Label>
-                <TextBox m:HintAssist.Hint="Email">
+                <TextBox x:Name="email" m:HintAssist.Hint="Email">
                     <TextBox.Text>
                         <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                             <Binding.ValidationRules>
@@ -55,7 +57,7 @@
             </StackPanel>
             <StackPanel>
                 <Label>Password</Label>
-                <TextBox m:HintAssist.Hint="Password">
+                <TextBox x:Name="passw" m:HintAssist.Hint="Password">
                     <TextBox.Text>
                         <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                             <Binding.ValidationRules>
@@ -68,7 +70,7 @@
             </StackPanel>
             <StackPanel>
                 <Label>Дата CreatedAt</Label>
-                <TextBox m:HintAssist.Hint="Date">
+                <TextBox x:Name="date" m:HintAssist.Hint="Date">
                     <TextBox.Text>
                         <Binding Path="CreatedAt" UpdateSourceTrigger="PropertyChanged"
 ValidatesOnDataErrors="True">
@@ -81,8 +83,29 @@ ValidatesOnDataErrors="True">
             </StackPanel>
             
             <StackPanel>
-                <Button Click="Profile">Профайл</Button>
-                <Button Click="save">Сохранить в БД</Button>
+                <Button Click="Profile" Content="Профайл">
+
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource ValidationConverter}">
+                            <Binding ElementName="login" Path="(Validation.HasError)" />
+                            <Binding ElementName="name" Path="(Validation.HasError)" />
+                            <Binding ElementName="email" Path="(Validation.HasError)" />
+                            <Binding ElementName="passw" Path="(Validation.HasError)" />
+                            <Binding ElementName="date" Path="(Validation.HasError)" />
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
+                <Button Click="save" Content="Сохранить в БД">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource ValidationConverter}">
+                            <Binding ElementName="login" Path="(Validation.HasError)" />
+                            <Binding ElementName="name" Path="(Validation.HasError)" />
+                            <Binding ElementName="email" Path="(Validation.HasError)" />
+                            <Binding ElementName="passw" Path="(Validation.HasError)" />
+                            <Binding ElementName="date" Path="(Validation.HasError)" />
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
                 <Button Click="back">Назад</Button>
             </StackPanel>
         </StackPanel>

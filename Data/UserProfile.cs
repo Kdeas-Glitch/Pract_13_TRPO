@@ -14,8 +14,8 @@ namespace Pract_12.Data
             get => _id;
             set => SetProperty(ref _id, value);
         }
-        private string avatarurl;
-        public string AvatarUrl
+        private string? avatarurl;
+        public string? AvatarUrl
         {
             get => avatarurl;
             set => SetProperty(ref avatarurl, value);
