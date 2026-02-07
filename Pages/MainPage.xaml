@@ -42,21 +42,78 @@
                             <TextBlock Text="{Binding Password}"/>
                             <TextBlock Text="{Binding CreatedAt, StringFormat={}{0:dd.MM.yyyy}}"/>
                         </StackPanel>
-                        <DockPanel Margin="0 10">
-                            <TextBlock DockPanel.Dock="Right">Информация</TextBlock>
-                            <TextBlock TextWrapping="Wrap" Visibility="{Binding UserProfile.Phone,Converter={StaticResource VisibilityConverter}}">
-                            <Run Text="Телефон: "/>
-                            <Run Text="{Binding UserProfile.Phone}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding UserProfile.Phone}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+                        <TextBlock DockPanel.Dock="Right">Информация</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Style.Triggers>
+                                        <DataTrigger Binding="{Binding UserProfile.Phone}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                            <TextBlock >
+                                <Run Text="Телефон: "/>
+                                <Run Text="{Binding UserProfile.Phone}"/>
                             </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Visibility="{Binding UserProfile.Birthday, Converter={StaticResource ProfConverter}}">
-                                <Run Text="День Рождение: "/>
-                                <Run Text="{Binding UserProfile.Birthday}"/>       
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Visibility="{Binding UserProfile.Bio, Converter={StaticResource ProfConverter}}">
-                                <Run Text="Описание: "/>
-                                <Run Text="{Binding UserProfile.Bio}"/>
-                            </TextBlock>
-                        </DockPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding UserProfile.Birthday}" Value="{x:Null}">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBlock >
+                                        <Run Text="День рождения: "/> 
+                                        <Run Text="{Binding UserProfile.Birthday}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding UserProfile.Bio}" Value="{x:Null}">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBlock >
+                                    <Run Text="Описание: "/> 
+                                    <Run Text="{Binding UserProfile.Bio}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding UserProfile.AvatarUrl}" Value="{x:Null}">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBlock >
+                                        <Run Text="Аватар: "/>
+                                        <Run Text="{Binding UserProfile.AvatarUrl}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
