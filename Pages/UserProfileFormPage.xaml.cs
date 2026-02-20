@@ -34,10 +34,20 @@ namespace Pract_12.Pages
                 _student = _editStudent;
             }
             isEdit = edit;
-            DataContext = _student.UserProfile;
+            DataContext = _student;
         }
         private void save(object sender, RoutedEventArgs e)
         {
+            if (_student.UserProfile.Bio == "")
+                _student.UserProfile.Bio = null;
+            if (_student.UserProfile.AvatarUrl == "")
+                _student.UserProfile.AvatarUrl = null;
+            if (_student.UserProfile.Phone == "")
+                _student.UserProfile.Phone = null;
+            if (_student.UserProfile.Birthday.ToString() == "")
+                _student.UserProfile.Birthday = null;
+
+
             if (isEdit)
                 _service.Commit();
             else
@@ -48,7 +58,6 @@ namespace Pract_12.Pages
         }
         private void back(object sender, RoutedEventArgs e)
         {
-
             NavigationService.GoBack();
         }
     }

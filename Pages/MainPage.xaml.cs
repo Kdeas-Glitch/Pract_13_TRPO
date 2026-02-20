@@ -26,7 +26,7 @@ namespace Pract_12.Pages
         public UsersService service { get; set; } = new();
         public User? student { get; set; } = null;
         public MainPage()
-        {
+        { 
             InitializeComponent();
         }
         public void go_form(object sender, EventArgs e)
@@ -54,6 +54,11 @@ namespace Pract_12.Pages
             {
                 service.Remove(student);
             }
+        }
+
+        private void Roles(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RoleList());
         }
     }
 }

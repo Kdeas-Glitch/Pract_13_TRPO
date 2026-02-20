@@ -9,38 +9,36 @@
       xmlns:conv="clr-namespace:Pract_12.Converter"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UserProfileFormPage">
+      Title="UserProfileFormPage" Cursor="">
     <Page.Resources>
         <conv:ValidationConverter  x:Key="ValidationConverter"/>
     </Page.Resources>
     <StackPanel>
         <StackPanel>
         <Label>Аватар(ссылка)</Label>
-            <TextBox m:HintAssist.Hint="Avatar" >
-            <Binding Path="AvatarUrl" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                <Binding.ValidationRules>
-                    <validators:RequiredRule/>
-                </Binding.ValidationRules>
+            <TextBox m:HintAssist.Hint="Avatar">
+                <Binding Path="UserProfile.AvatarUrl" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                    </Binding.ValidationRules>
             </Binding>
         </TextBox>
     </StackPanel>
     <StackPanel>
         <Label>Номер Телефона</Label>
-            <TextBox m:HintAssist.Hint="Phone">
-            <Binding Path="Phone" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                <Binding.ValidationRules>
-                    <validators:RequiredRule/>
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-    </StackPanel>
+            <TextBox m:HintAssist.Hint="Phone" x:Name="Phone">
+                <Binding Path="UserProfile.Phone" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <validators:PhoneValid />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+        </StackPanel>
     <StackPanel>
         <Label>День рождение</Label>
-            <TextBox m:HintAssist.Hint="Birthday">
-            <Binding Path="Birthday" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                <Binding.ValidationRules>
-                    <validators:RequiredRule/>
-                    <validators:DateValidation/>
+            <TextBox m:HintAssist.Hint="Birthday" x:Name="Birthday">
+                <Binding Path="UserProfile.Birthday" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <validators:DateValidation/>
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -48,10 +46,9 @@
     <StackPanel>
         <Label>Описание</Label>
             <TextBox m:HintAssist.Hint="Bio">
-            <Binding Path="Bio" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                <Binding.ValidationRules>
-                    <validators:RequiredRule/>
-                </Binding.ValidationRules>
+                <Binding Path="UserProfile.Bio" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                    </Binding.ValidationRules>
             </Binding>
         </TextBox>
     </StackPanel>
@@ -59,11 +56,8 @@
             <Button Click="save" Content="Сохранить в БД" Cursor="Hand">
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource ValidationConverter}">
-                        <Binding ElementName="login" Path="(Validation.HasError)" />
-                        <Binding ElementName="name" Path="(Validation.HasError)" />
-                        <Binding ElementName="email" Path="(Validation.HasError)" />
-                        <Binding ElementName="passw" Path="(Validation.HasError)" />
-                        <Binding ElementName="date" Path="(Validation.HasError)" />
+                        <Binding ElementName="Phone" Path="(Validation.HasError)" />
+                        <Binding ElementName="Birthday" Path="(Validation.HasError)" />
                     </MultiBinding>
                 </Button.IsEnabled>
             </Button>

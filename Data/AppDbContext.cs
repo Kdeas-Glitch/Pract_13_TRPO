@@ -10,12 +10,13 @@ namespace Pract_12.Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<User> Students { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Role> Roles { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=sql.ects;Database=Demin_04;User Id = student_04; Password = student_04;TrustServerCertificate = True; ");
-            //optionsBuilder.UseSqlServer("Server = localhost; Database = Demin_04; Trusted_Connection = True; User Id = student_04; Password = student_04;TrustServerCertificate = True; ");
+            //optionsBuilder.UseSqlServer("Server=sql.ects;Database=Demin_04;User Id = student_04; Password = student_04;TrustServerCertificate = True; ");
+            optionsBuilder.UseSqlServer("Server = localhost; Database = Demin_04; Trusted_Connection = True; User Id = student_04; Password = student_04;TrustServerCertificate = True; ");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,6 +25,11 @@ namespace Pract_12.Data
                 .HasOne(s => s.UserProfile)
                 .WithOne(ps => ps.User)
                 .HasForeignKey<UserProfile>(ps => ps.Id);
+
+            modelBuilder.Entity<Role>()
+                .HasMany(g => g.User)
+                .WithOne(s => s.Role)
+                .HasForeignKey(s => s.RoleId);
 
         }
     }

@@ -29,6 +29,8 @@ namespace Pract_12.Service
                 Password = student.Password,
                 CreatedAt = student.CreatedAt,
                 UserProfile = student.UserProfile,
+                RoleId = student.RoleId,
+                Role=student.Role,
             };
             _db.Add<User>(_student);
             Commit();
@@ -37,8 +39,9 @@ namespace Pract_12.Service
         public int Commit() => _db.SaveChanges();
         public void GetAll()
         {
-            var users = _db.Students
+            var users = _db.Users
                 .Include(s=>s.UserProfile)
+                .Include(s=>s.Role)
                 .ToList();
             Users.Clear();
             foreach (var student in users)

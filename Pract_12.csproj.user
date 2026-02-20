@@ -10,6 +10,9 @@
     <Compile Update="Pages\MainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\RoleList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\UserFormPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

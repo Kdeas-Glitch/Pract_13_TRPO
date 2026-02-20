@@ -38,27 +38,30 @@ namespace Pract_12.Pages
         }
         private void save(object sender, RoutedEventArgs e)
         {
+            if (_student.UserProfile.Bio == "")
+                _student.UserProfile.Bio = null;
+            if (_student.UserProfile.AvatarUrl == "")
+                _student.UserProfile.AvatarUrl = null;
+            if (_student.UserProfile.Phone == "")
+                _student.UserProfile.Phone = null;
+            if (_student.UserProfile.Birthday.ToString() == "")
+                _student.UserProfile.Birthday = null;
             if (isEdit)
                 _service.Commit();
             else
                 _service.Add(_student);
             NavigationService.GoBack();
         }
-        private void back(object sender, RoutedEventArgs e)
+        private void back(object sender, RoutedEventArgs e)//как исправить ошибку
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MainPage());
         }
 
         private void Profile(object sender, RoutedEventArgs e)
         {
-            if (_student.Name != null && _student.Email != null && _student.Password != null && _student.Login != null)
-            {
-                _student.UserProfile = new();
-                NavigationService.Navigate(new UserProfileFormPage(isEdit,_student));
-                
-            }
-            else
-                MessageBox.Show("Все поля должны быть заполнены");
+            if(_student.UserProfile == null)
+            _student.UserProfile = new();
+            NavigationService.Navigate(new UserProfileFormPage(isEdit, _student));
         }
     }
 }

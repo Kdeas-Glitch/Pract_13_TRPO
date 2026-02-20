@@ -7,11 +7,13 @@
       xmlns:m="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:validators="clr-namespace:Pract_12.ValidationRules"
       xmlns:conv="clr-namespace:Pract_12.Converter"
+      xmlns:service="clr-namespace:Pract_12.Service"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserFormPage">
     <Page.Resources>
         <conv:ValidationConverter  x:Key="ValidationConverter"/>
+        <service:RolesService x:Key="rService"/>
     </Page.Resources>
     <Grid>
         <StackPanel>
@@ -81,7 +83,14 @@ ValidatesOnDataErrors="True">
                     </TextBox.Text>
                 </TextBox>
             </StackPanel>
-            
+            <StackPanel>
+                <Label>Роль</Label>
+                <ComboBox m:HintAssist.Hint="Роли"
+                    ItemsSource="{Binding Source={StaticResource rService},Path=Roles}"
+                          DisplayMemberPath="Title"
+                          SelectedItem="{Binding Role}"/>
+            </StackPanel>
+
             <StackPanel>
                 <Button Click="Profile" Content="Профайл">
 

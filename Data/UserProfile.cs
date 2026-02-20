@@ -21,22 +21,22 @@ namespace Pract_12.Data
             set => SetProperty(ref avatarurl, value);
         }
 
-        private string phone;
-        public string Phone
+        private string? phone;
+        public string? Phone
         {
             get => phone;
             set => SetProperty(ref phone, value);
         }
 
-        private DateTime birthday;
-        public DateTime Birthday
+        private DateTime? birthday;
+        public DateTime? Birthday
         {
             get => birthday;
             set => SetProperty(ref birthday, value);
         }
 
-        private string bio;
-        public string Bio
+        private string? bio;
+        public string? Bio
         {
             get => bio;
             set => SetProperty(ref bio, value);
