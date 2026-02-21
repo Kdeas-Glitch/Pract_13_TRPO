@@ -38,23 +38,54 @@ namespace Pract_12.Pages
         }
         private void save(object sender, RoutedEventArgs e)
         {
-            if (_student.UserProfile.Bio == "")
+            bool ex = false;
+            if (_student.UserProfile.Bio == ""|| _student.UserProfile.Bio == null)
+            {
                 _student.UserProfile.Bio = null;
-            if (_student.UserProfile.AvatarUrl == "")
-                _student.UserProfile.AvatarUrl = null;
-            if (_student.UserProfile.Phone == "")
-                _student.UserProfile.Phone = null;
-            if (_student.UserProfile.Birthday.ToString() == "")
-                _student.UserProfile.Birthday = null;
-
-
-            if (isEdit)
-                _service.Commit();
+            }
             else
-                _service.Add(_student);
+            {
+                ex = true;
+            }
+            if (_student.UserProfile.AvatarUrl == "" || _student.UserProfile.AvatarUrl == null)
+            {
+                _student.UserProfile.AvatarUrl = null;
+            }
+            else
+            {
+                ex = true;
+            }
+            if (_student.UserProfile.Phone == "" || _student.UserProfile.Phone == null)
+            {
+                _student.UserProfile.Phone = null;
+            }
+            else
+            {
+                ex = true;
+            }
+            if (_student.UserProfile.Birthday.ToString() == "" || _student.UserProfile.Birthday == null)
+            {
+                _student.UserProfile.Birthday = null;
+            }
+            else
+            {
+                ex = true;
+            }
 
+            if (ex)
+            {
+                if (isEdit)
+                    _service.Commit();
+                else
+                    _service.Add(_student);
+                NavigationService.GoBack();
+            }
+            else
+            {
+                _student.UserProfile = null;
+            }
             NavigationService.GoBack();
-            NavigationService.GoBack();
+
         }
         private void back(object sender, RoutedEventArgs e)
         {

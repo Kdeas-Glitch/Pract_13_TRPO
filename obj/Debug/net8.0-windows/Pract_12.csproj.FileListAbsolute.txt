@@ -479,3 +479,7 @@ C:\Users\HardShop\Desktop\Projects\Pract_13_TRPO\obj\Debug\net8.0-windows\Pages\
 C:\Users\HardShop\Desktop\Projects\Pract_13_TRPO\obj\Debug\net8.0-windows\Pages\RoleList.baml
 C:\Users\HardShop\Desktop\Projects\Pract_13_TRPO\obj\Debug\net8.0-windows\Pract_12.Properties.Resources.resources
 C:\Users\HardShop\Desktop\Projects\Pract_13_TRPO\obj\Debug\net8.0-windows\Pract_12.csproj.GenerateResource.cache
+C:\Users\st310-04\Desktop\Демин\Pract_13_TRPO\obj\Debug\net8.0-windows\Pages\RoleList.g.cs
+C:\Users\st310-04\Desktop\Демин\Pract_13_TRPO\obj\Debug\net8.0-windows\Pages\RoleList.baml
+C:\Users\st310-04\Desktop\Демин\Pract_13_TRPO\obj\Debug\net8.0-windows\Pract_12.Properties.Resources.resources
+C:\Users\st310-04\Desktop\Демин\Pract_13_TRPO\obj\Debug\net8.0-windows\Pract_12.csproj.GenerateResource.cache

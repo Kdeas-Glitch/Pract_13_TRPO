@@ -49,7 +49,7 @@ namespace Pract_12.Migrations
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "Title" },
-                values: new object[] { 1, "Пользователь" }
+                values: new object[] { 1, "Пользователь",2,"Админ",3,"Менеджер" }
                 );
 
             migrationBuilder.CreateIndex(

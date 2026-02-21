@@ -25,9 +25,11 @@
 
   <ItemGroup>
     <Resource Include="Images\default-avatar.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\key.jpg" />
+    <Resource Include="Images\key.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

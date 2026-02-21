@@ -35,7 +35,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView Grid.Column="1" ItemsSource="{Binding  Users}">
+        <ListView Grid.Column="1" ItemsSource="{Binding Users}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

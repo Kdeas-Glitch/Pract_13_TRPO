@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +15,27 @@ namespace Pract_12.ValidationRules
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            string path = value as string;
 
             bool isVisible = false;
-            if (value != "" && value != null)
+
+            if (!string.IsNullOrEmpty(path))
             {
                 isVisible = true;
+                //if (File.Exists("pack://application:,,,/Images/" + path))
+                if(path== "default-avatar.png")
+                {
+                    return "pack://application:,,,/Images/" + path;
+                }
+
+
             }
 
-            // Инвертирование если нужно
-            if (parameter is string param && param.ToLower() == "invert")
-                isVisible = !isVisible;
+            return "pack://application:,,,/Images/key.jpg";
+            //return "/Images/default-avatar.png";
 
-            return isVisible ? Visibility.Visible : Visibility.Collapsed;
+
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
